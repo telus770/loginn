@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('bg.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    width: 90%; /* Adjusted width for smaller screens */
+    max-width: 500px; /* Maximum width for larger screens */
+    padding: 20px; /* Adjusted padding */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background to make the text stand out */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.login-box {
+    text-align: left;
+    padding: 20px; /* Adjusted padding for smaller screens */
+}
+
+.logo {
+    width: 100px; /* Adjusted width for smaller screens */
+    max-width: 200px; /* Maximum width for larger screens */
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+}
+
+hr {
+    margin-top: 20px; /* Adjusted margin */
+}
+
+a {
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0; /* Adjusted margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.forgot-username {
+    display: block;
+    margin-bottom: 10px;
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+#remember-username {
+    margin-right: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #e60000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+.register-link {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Adjusted margin for smaller screens */
+    padding: 20px; /* Adjusted padding */
+    border: 1px solid #888;
+    width: 80%; /* Adjusted width for smaller screens */
+    max-width: 400px; /* Maximum width for larger screens */
+    border-radius: 10px;
+}
+
+.close {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -1.5rem;
+    width: 80px;
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .login-container {
+        padding: 40px; /* Increased padding for larger screens */
+    }
+
+    .login-box {
+        padding: 50px; /* Increased padding for larger screens */
+    }
+
+    .logo {
+        width: 200px; /* Increased width for larger screens */
+    }
+
+    .modal-content {
+        margin: 17% auto;
+        padding: 39px;
+        width: 25%;
+    }
+}

